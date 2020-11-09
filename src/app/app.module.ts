@@ -8,6 +8,9 @@ import { TestComponent } from './test/test.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { RegiterComponent } from './regiter/regiter.component';
+
 
 @NgModule({
   declarations: [
@@ -15,11 +18,13 @@ import { FooterComponent } from './footer/footer.component';
     TestComponent,
     NavBarComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    RegiterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
