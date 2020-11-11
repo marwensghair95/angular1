@@ -6,7 +6,7 @@ import { Error500Component } from './error500/error500.component';
 import { LoginComponent } from './login/login.component';
 import { RegiterComponent } from './regiter/regiter.component';
 import { UserAddComponent } from './user-add/user-add.component';
-import { UsersListComponent } from './users-list/users-list.component';
+
 
 const routes: Routes = [
   {
@@ -23,6 +23,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'users',
+    component: UserAddComponent
+  }  ,
+  {
     path: 'error500',
     component: Error500Component
     
@@ -30,11 +34,7 @@ const routes: Routes = [
   {
     path: '**',
     component: Error404Component
-  },
-  {
-    path: 'ajoute-user',
-    component: UserAddComponent
-  }  
+  }
 ];
 
 @NgModule({

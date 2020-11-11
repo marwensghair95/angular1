@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent implements OnInit {
+  first_name:String="";
+  last_name:String="";
 
   constructor() { }
 
