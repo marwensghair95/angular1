@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { RegiterComponent } from './regiter/regiter.component';
 import { Error404Component } from './error404/error404.component';
 import { Error500Component } from './error500/error500.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserAddComponent } from './user-add/user-add.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { Error500Component } from './error500/error500.component';
     FooterComponent,
     RegiterComponent,
     Error404Component,
-    Error500Component
+    Error500Component,
+    UsersListComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,
