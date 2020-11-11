@@ -10,11 +10,11 @@
         </tr>
       </thead>
       <tbody>
-      <tr>
-      <td >marwen</td>
-      <td >sghair</td>
-      <td ><button  class="btn btn-outline-primary bg-white" >Update</button></td>
-      <td ><button  class="btn btn-outline-primary bg-white" >remove</button></td>
+      <tr *ngFor="let user of users, let i= index ">
+      <td >{{user.first_name }}</td>
+      <td >{{user.last_name }}</td>
+      <td ><button (click)="update(i)" class="btn btn-outline-primary bg-white" >Update</button></td>
+      <td ><button (click)="remove(i)" class="btn btn-outline-primary bg-white" >remove</button></td>
       </tr>
   </tbody>
   </table>

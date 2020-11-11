@@ -2,15 +2,15 @@
     <div class="offset-md-3 col-6 col-md-4 alert alert-dark">
         <form>
             <div class="form-group">
-                <input class="form-control " [(ngModel)]="first_name" name="fname" type="text" placeholder="Enter Your first name">
+                <input class="form-control " [(ngModel)]="fname" name="fname" type="text" placeholder="Enter Your first name">
             </div>
             <div class="form-group">
-                <input class="form-control" [(ngModel)]="last_name" name="lname" type="text" placeholder="Enter Your last name">
+                <input class="form-control" [(ngModel)]="lname" name="lname" type="text" placeholder="Enter Your last name">
             </div>
-            <div><button  class="btn btn-outline-primary bg-white" >AJOUTER</button></div>
-            
+            <div><button *ngIf="showAddButton" (click)="adduser()" class="btn btn-outline-primary bg-white" >AJOUTER</button></div>
+            <div><button *ngIf="!showAddButton" (click)="saveUpdate()" class="btn btn-outline-primary bg-white" >SAVE UPDATE</button></div>
         </form>
     </div>  
  </div>
  
-<app-users-list [fname]="first_name" [lname]="last_name"></app-users-list>
+<app-users-list [users]="usersList" (i)="update($event)" ></app-users-list>
