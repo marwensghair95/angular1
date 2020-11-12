@@ -13,6 +13,7 @@ export class UserAddComponent implements OnInit {
   showAddButton:boolean=true;
   usersList: Array<Object> = [];
   @Output() i ;
+  @Output() j ;
   index:any;
  
 
@@ -33,6 +34,7 @@ export class UserAddComponent implements OnInit {
  
   update(i)
   {
+   
     this.index=i;
     this.showAddButton=false;
    var user:any=this.usersList[i];
@@ -50,6 +52,12 @@ export class UserAddComponent implements OnInit {
     this.usersList.splice(this.index,1,newuser);
     this.fname = "";
     this.lname= "";
+  }
+  delete(j)
+  {
+    this.usersList.splice(j,1);
+    console.log(j);
+    
   }
   
 

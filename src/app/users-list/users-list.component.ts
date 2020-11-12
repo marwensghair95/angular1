@@ -9,17 +9,19 @@ export class UsersListComponent implements OnInit {
   
   @Input() users:Array<Object>;
   @Output() i = new EventEmitter<number>();
+  @Output() j = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  remove(i){
-    this.users.splice(i,1);
+  remove(j){
+    // this.users.splice(i,1);
+    this.j.emit(j);
   }
 
   update(i){
-    console.log(i);
+    
     this.i.emit(i);
   }
 
