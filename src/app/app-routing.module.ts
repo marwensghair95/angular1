@@ -5,6 +5,9 @@ import { Error404Component } from './error404/error404.component';
 import { Error500Component } from './error500/error500.component';
 import { LoginComponent } from './login/login.component';
 import { RegiterComponent } from './regiter/regiter.component';
+import { TaskAddComponent } from './task-add/task-add.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskUpdateComponent } from './task-update/task-update.component';
 import { UserAddComponent } from './user-add/user-add.component';
 
 
@@ -27,9 +30,20 @@ const routes: Routes = [
     component: UserAddComponent
   }  ,
   {
+    path: 'tasks',
+    component: TaskListComponent
+  } ,
+  {
+    path: 'tasks/add',
+    component: TaskAddComponent
+  } ,
+  {
+    path: 'tasks/update/:index',
+    component: TaskUpdateComponent
+  } ,
+  {
     path: 'error500',
     component: Error500Component
-    
   },
   {
     path: '**',
