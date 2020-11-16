@@ -6,7 +6,7 @@
         <table class="table table-hover table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
-                    
+                    <th>ID</th>
                     <th>Titre</th>
                     <th>Description</th>
                     <th>Actions</th>
@@ -14,7 +14,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let control of taskTabTitre.controls; index as i" >
-                    
+                    <td>
+                        <span>{{ i }}</span>
+                    </td>
                     <td>
                         <input [formControl]="taskTabTitre.controls[i]" disabled />
                     </td>
@@ -23,7 +25,7 @@
                     </td>
                     <td class="text-center">
                         <button class="btn btn-info mr-3">Delete</button>
-                        <a class="btn btn-danger" [routerLink]="['/tasks/update',1]">Update</a>
+                        <a class="btn btn-danger" [routerLink]="['/tasks/update',{'index': i}]">Update</a>
                     </td>
                 </tr>
             </tbody>
