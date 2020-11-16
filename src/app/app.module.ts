@@ -20,6 +20,8 @@ import { TaskUpdateComponent } from './task-update/task-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,7 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
     UserAddComponent,
     TaskAddComponent,
     TaskListComponent,
-    TaskUpdateComponent
+    TaskUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
     ReactiveFormsModule,
     StorageServiceModule 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [TaskAddComponent],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
