@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from '../services/tasks.service';
 
 
@@ -12,21 +12,23 @@ import { TasksService } from '../services/tasks.service';
 export class TaskUpdateComponent implements OnInit {
   taskForm: FormGroup;
   id:any;
-  constructor(private taskService: TasksService, private route: ActivatedRoute) { }
+  constructor(private taskService: TasksService, private router: ActivatedRoute, private route:Router) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('index');
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    this.id = this.router.snapshot.paramMap.get('index');
     this.taskForm = new FormGroup({
-      title: new FormControl(tasks[this.id].title),
-      description: new FormControl(tasks[this.id].description)
+      title: new FormControl(''),
+      description: new FormControl('')
     });
+    const task = this.taskService.getTaskbyid(this.id);
+    this.taskForm.patchValue(task);
   }
   submitTask() {
-    this.id = this.route.snapshot.paramMap.get('index');
+    this.id = this.router.snapshot.paramMap.get('index');
     this.taskService.updateTask(this.id,this.taskForm)
-     
-    document.location.href = "tasks";
+    this.route.navigateByUrl("/tasks");
+   
 
   }
+  
 }

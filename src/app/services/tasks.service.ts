@@ -18,11 +18,19 @@ export class TasksService {
 
      localStorage.setItem('tasks',JSON.stringify(tasks));
   };
-  deleteTask(){
+  deleteTask(i){
+    console.log(i);
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.splice(i,1);
+    localStorage.setItem('tasks',JSON.stringify(tasks));
 
   };
   listTask(){
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     return tasks;
   };
+  getTaskbyid(id){
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    return  tasks[id];
+  }
 }

@@ -15,10 +15,10 @@
             <tbody>
                 <tr *ngFor="let task of tasks ;let i= index">
                     <td><span>{{ i }}</span> </td>
-                    <td>{{task.title}} </td>
-                    <td>{{task.description}} </td>
+                    <td>{{task.title | lowercase}} </td>
+                    <td>{{task.description | uppercase}} </td>
                     <td class="text-center">
-                        <button class="btn btn-info mr-3">Delete</button>
+                        <button class="btn btn-info mr-3" (click)="deletTask(i)">Delete</button>
                         <a class="btn btn-danger" [routerLink]="['/tasks/update', i]">Update</a>
                     </td>
                 </tr>

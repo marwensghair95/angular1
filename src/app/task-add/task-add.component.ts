@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { TasksService } from '../services/tasks.service';
 
@@ -20,7 +21,7 @@ export class TaskAddComponent implements OnInit {
  
 
 
-  constructor(private taskService: TasksService) { }
+  constructor(private taskService: TasksService, private route:Router) { }
 
   ngOnInit(): void {
     this.taskForm = new FormGroup({
@@ -35,8 +36,7 @@ export class TaskAddComponent implements OnInit {
     if (this.taskForm.invalid) {
       return;
     }
-    
     this.taskService.addTask(this.taskForm.value);
-    document.location.href = "tasks";
+    this.route.navigateByUrl("/tasks");
   }
 }

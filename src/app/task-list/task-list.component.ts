@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl } from '@angular/forms';
 import { TasksService } from '../services/tasks.service';
 
 
@@ -18,6 +17,8 @@ export class TaskListComponent implements OnInit {
    this.tasks=this.taskService.listTask()
 
   }
-
+  deletTask(i){
+  this.taskService.deleteTask(i) 
+  }
 
 }
