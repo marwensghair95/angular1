@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
-import { Inject, Injectable } from '@angular/core';
-import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+
+import { TasksService } from '../services/tasks.service';
 
 
 let STORAGE_KEY = 'Tasks_List';
@@ -13,14 +13,14 @@ let STORAGE_KEY = 'Tasks_List';
 
 
 
-@Injectable()
+
 export class TaskAddComponent implements OnInit {
   taskForm: FormGroup;
   submited: boolean = false;
+ 
 
 
-
-  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
+  constructor(private taskService: TasksService) { }
 
   ngOnInit(): void {
     this.taskForm = new FormGroup({
@@ -35,16 +35,8 @@ export class TaskAddComponent implements OnInit {
     if (this.taskForm.invalid) {
       return;
     }
-    console.log(this.taskForm.value.description);
-
-    const tasks = this.storage.get(STORAGE_KEY) || [];
-    tasks.push({
-      title: this.taskForm.value.title,
-      description: this.taskForm.value.description
-
-    });
-    this.storage.set(STORAGE_KEY, tasks);
-
+    
+    this.taskService.addTask(this.taskForm.value);
     document.location.href = "tasks";
   }
 }

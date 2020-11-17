@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { TasksService } from '../services/tasks.service';
 
-let STORAGE_KEY = 'Tasks_List';
+
 @Component({
   selector: 'app-task-update',
   templateUrl: './task-update.component.html',
@@ -12,13 +12,11 @@ let STORAGE_KEY = 'Tasks_List';
 export class TaskUpdateComponent implements OnInit {
   taskForm: FormGroup;
   id:any;
-  
-  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService, private route: ActivatedRoute) { }
+  constructor(private taskService: TasksService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('index');
-    const tasks = this.storage.get(STORAGE_KEY) || [];
-
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     this.taskForm = new FormGroup({
       title: new FormControl(tasks[this.id].title),
       description: new FormControl(tasks[this.id].description)
@@ -26,16 +24,9 @@ export class TaskUpdateComponent implements OnInit {
   }
   submitTask() {
     this.id = this.route.snapshot.paramMap.get('index');
-    const tasks = this.storage.get(STORAGE_KEY) || [];
-    tasks.map( (task)=> {
-     if (task==tasks[this.id]) {
-       task.title= this.taskForm.value.title;
-       task.description=this.taskForm.value.description;
-     }
-     this.storage.set(STORAGE_KEY, tasks);
+    this.taskService.updateTask(this.id,this.taskForm)
      
     document.location.href = "tasks";
-    });  
 
   }
 }
