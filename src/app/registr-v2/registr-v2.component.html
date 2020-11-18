@@ -1,0 +1,48 @@
+<div class="row mt-3 ">
+
+    <div class="offset-md-3 col-6 col-md-4 alert alert-danger">
+        <form [formGroup]="registForm" (ngSubmit)="submitregister()">
+            <div class="form-group">
+                <input class="form-control form-control-lg" formControlName="fname" name="fname" type="text" placeholder="Enter Your First name"
+                [ngClass]="{ 'is-invalid': submited && registForm.controls.fname.errors,'is-valid': submited && !registForm.controls.fname.errors }">
+                <div  class="invalid-feedback d-block">
+                    <p *ngIf="submited && registForm.controls.fname.hasError('required')">First name est obligatoire</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-lg" formControlName="lname" name="lname" type="text" placeholder="Enter Your last name"
+                [ngClass]="{ 'is-invalid': submited && registForm.controls.lname.errors,'is-valid': submited && !registForm.controls.lname.errors }">
+                <div  class="invalid-feedback d-block">
+                    <p *ngIf="submited && registForm.controls.lname.hasError('required')">last name est obligatoire</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control" formControlName="email" name="email" type="email" placeholder="Email"
+                [ngClass]="{ 'is-invalid': submited && registForm.controls.email.errors,'is-valid': submited && !registForm.controls.email.errors }">
+                <div  class="invalid-feedback d-block">
+                    <p *ngIf="submited && registForm.controls.email.hasError('required')">email est obligatoire</p>
+                    <p *ngIf="submited && registForm.controls.email.hasError('email')">saisaissez email est valid</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-lg" formControlName="password" name="pass" type="password" placeholder="Enter Your Password"
+                [ngClass]="{ 'is-invalid': submited && registForm.controls.password.errors,'is-valid': submited && !registForm.controls.password.errors }">
+                <div  class="invalid-feedback d-block">
+                    <p *ngIf="submited && registForm.controls.password.hasError('required')">password est obligatoire</p>
+                    <p *ngIf="submited && registForm.controls.password.hasError('minlength')">saisaissez password est valid</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-lg" formControlName="conPassword" name="pass" type="Password" placeholder="Confirm Your Password"
+                [ngClass]="{ 'is-invalid': submited && registForm.controls.conPassword.errors,'is-valid': submited && !registForm.controls.conPassword.errors }">
+                <div  class="invalid-feedback d-block">
+                    <p *ngIf="submited && registForm.controls.conPassword.hasError('required')">password est obligatoire</p>
+                    <p *ngIf="submited && registForm.controls.conPassword.hasError('minlength')">saisaissez password est valid</p>
+                </div>
+            </div>
+            <div><button type="submit" class="btn btn-outline-primary bg-white">login</button></div>
+            
+        </form>
+    </div>
+
+</div>

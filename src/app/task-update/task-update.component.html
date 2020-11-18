@@ -5,10 +5,17 @@
         <form class="mt-5 mb-5" [formGroup]="taskForm" (ngSubmit)="submitTask()">
             <div class="form-group">
                 <input class="form-control" formControlName="title" name="titre" type="text" placeholder="Titre">
+                <div *ngIf="submited && taskForm.controls.title.hasError('required')" >
+                    <div>le titre est obligatoire</div>
+                </div>
             </div>
             <div class="form-group">
                 <textarea class="form-control" formControlName="description" id="description" rows="3" placeholder="Description"></textarea>
-              </div>
+                <div>
+                    <div *ngIf="submited && taskForm.controls.description.hasError('required')">la description est obligatoire</div>
+                    <div *ngIf="submited && taskForm.controls.description.hasError('minLength')">saisiessez une description au moins 5 lettres</div>
+                </div>  
+            </div>
             <div>
                 <button type="submit" class="btn btn-success btn-block">Update</button>
             </div>   

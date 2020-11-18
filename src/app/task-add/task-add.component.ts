@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { TasksService } from '../services/tasks.service';
 
 
-let STORAGE_KEY = 'Tasks_List';
+
 @Component({
   selector: 'app-task-add',
   templateUrl: './task-add.component.html',
