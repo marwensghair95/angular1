@@ -23,7 +23,24 @@ import { LoginV2Component } from './login-v2/login-v2.component';
 import { RegistrV2Component } from './registr-v2/registr-v2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
 
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
+  }
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,4 +71,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   bootstrap: [AppComponent],
   
 })
+
+
+
 export class AppModule { }

@@ -6,7 +6,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="submitLog()">
         <div class="form-group">
             <input class="form-control" formControlName="email" name="email" type="email" placeholder="Email"
-            [ngClass]="{ 'is-invalid': submited && loginForm.controls.email.errors }">
+            [ngClass]="{ 'is-invalid': submited && loginForm.controls.email.errors,'is-valid': submited && !loginForm.controls.email.errors }">
             <div  class="invalid-feedback d-block">
                 <p *ngIf="submited && loginForm.controls.email.hasError('required')">email est obligatoire</p>
                 <p *ngIf="submited && loginForm.controls.email.hasError('email')">saisaissez email est valid</p>
@@ -20,7 +20,7 @@
                 <p *ngIf="submited && loginForm.controls.password.hasError('minlength')">saisaissez password est valid</p>
             </div>
         </div>
-        <div><button type="submit" class="btn btn-outline-primary bg-white">login</button></div>
+        <div><button [disabled]="loginForm.invalid" type="submit" class="btn btn-outline-primary bg-white">login</button></div>
         
     </form>
 </div>  
