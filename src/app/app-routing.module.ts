@@ -8,6 +8,7 @@ import { LoginV2Component } from './login-v2/login-v2.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrV2Component } from './registr-v2/registr-v2.component';
 import { RegiterComponent } from './regiter/regiter.component';
+import { AuthGuardService } from './services/auth-guard.service';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskUpdateComponent } from './task-update/task-update.component';
@@ -27,11 +28,17 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginV2Component
-  },{
-    path: 'dashboard',
-    component: DashboardComponent
   },
-  {
+  /************Route Guards*******************/
+  { 
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuardService] 
+  },
+  { path: 'login', redirectTo: 'login'
+ },
+  /*********************************************/
+ {
     path: 'users',
     component: UserAddComponent
   }  ,
