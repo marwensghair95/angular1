@@ -22,6 +22,7 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 import { LoginV2Component } from './login-v2/login-v2.component';
 import { RegistrV2Component } from './registr-v2/registr-v2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -65,7 +66,8 @@ export function MustMatch(controlName: string, matchingControlName: string) {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StorageServiceModule 
+    StorageServiceModule,
+    HttpClientModule
   ],
   providers: [TaskAddComponent],
   bootstrap: [AppComponent],

@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div class="row mt-5">
+    <div class="offset-2 col-8 ">
+      <table class="table table-hover table-striped table-bordered">
+        <thead class="table-dark  text-center">
+          <tr>
+            <th >first name</th>
+            <th >email</th>
+            <th >modif</th>
+            <th >remove</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users, let i= index ">
+        <td >{{user.name }}</td>
+        <td >{{user.email }}</td>
+        <td ><button  class="btn btn-outline-primary bg-white" >Update</button></td>
+        <td ><button  class="btn btn-outline-primary bg-white" >remove</button></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+  </div>

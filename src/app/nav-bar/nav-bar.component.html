@@ -8,9 +8,9 @@
   </ul>
 
   <form class="form-inline my-2 my-lg-0">
-    <button class="nav-link mr-2 bg-danger text-white" (click)="logOutBar()" routerLink="/login">Sign out</button>
-    <a class="nav-link mr-2 bg-danger text-white" routerLink="/login">Sign up</a>
-    <a class="nav-link  bg-danger text-white" routerLink="/register">Sign in</a>
+    <button class="nav-link mr-2 bg-danger text-white"  *ngIf="(isLoggedIn | async)"  (click)="logOutBar()"  routerLink="/login">Sign out</button>
+    <a class="nav-link mr-2 bg-danger text-white" routerLink="/login" *ngIf="!(isLoggedIn | async)" (click)="AuthServices.login()">Sign in</a>
+    <a class="nav-link  bg-danger text-white" routerLink="/register" *ngIf="!(isLoggedIn | async)" (click)="AuthServices.login()">Sign up</a>
 
   </form>
 </nav>
