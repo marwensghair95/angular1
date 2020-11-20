@@ -12,6 +12,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskUpdateComponent } from './task-update/task-update.component';
+import { UpdateDashboardComponent } from './update-dashboard/update-dashboard.component';
 import { UserAddComponent } from './user-add/user-add.component';
 
 
@@ -36,7 +37,13 @@ const routes: Routes = [
     canActivate: [AuthGuardService] 
   },
   { path: 'login', redirectTo: 'login'
- },
+ }, {
+  path: 'dashboard/update/:index',
+  component: UpdateDashboardComponent,
+  canActivate: [AuthGuardService] 
+},
+{ path: 'login', redirectTo: 'login'
+},
   /*********************************************/
  {
     path: 'users',

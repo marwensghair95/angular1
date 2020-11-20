@@ -1,0 +1,59 @@
+<div class="row mt-5 ">
+
+    <div class="offset-md-3 col-6 col-md-5 bg-info">
+        <form  [formGroup]="UserForm" (ngSubmit)="submitUser()">
+            <div class="form-row">
+                <div class="col-md-2 mb-3">
+                    <label>ID</label>
+                    <input type="text" class="form-control" formControlName="id"
+                    [ngClass]="{ 'is-invalid': submited && UserForm.controls.id.errors,'is-valid': submited && !UserForm.controls.id.errors }">
+                    <div  class="invalid-feedback d-block">
+                        <p *ngIf="submited && UserForm.controls.id.hasError('required')">Id obligatoire</p>
+                        <p *ngIf="submited && UserForm.controls.id.hasError('maxlength')"> Id non valid</p>
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName="name"
+                    [ngClass]="{ 'is-invalid': submited && UserForm.controls.name.errors,'is-valid': submited && !UserForm.controls.name.errors }">
+                    <div  class="invalid-feedback d-block">
+                        <p *ngIf="submited && UserForm.controls.name.hasError('required')">Name est obligatoire</p>
+                        <p *ngIf="submited && UserForm.controls.name.hasError('minlength')"> Name non valid</p>
+                    </div> 
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" formControlName="username"
+                    [ngClass]="{ 'is-invalid': submited && UserForm.controls.username.errors,'is-valid': submited && !UserForm.controls.username.errors }">
+                    <div  class="invalid-feedback d-block">
+                        <p *ngIf="submited && UserForm.controls.username.hasError('required')">Name est obligatoire</p>
+                        <p *ngIf="submited && UserForm.controls.username.hasError('minlength')"> UserName non valid</p>
+                    </div> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label>Email</label>
+                    <input type="text" class="form-control" formControlName="email"
+                    [ngClass]="{ 'is-invalid': submited && UserForm.controls.email.errors,'is-valid': submited && !UserForm.controls.email.errors }">
+                <div  class="invalid-feedback d-block">
+                    <p *ngIf="submited && UserForm.controls.email.hasError('required')">email est obligatoire</p>
+                    <p *ngIf="submited && UserForm.controls.email.hasError('email')"> email non valid</p>
+                </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Phone</label>
+                    <input type="text" class="form-control"  formControlName="phone"
+                    [ngClass]="{ 'is-invalid': submited && UserForm.controls.phone.errors,'is-valid': submited && !UserForm.controls.phone.errors }">
+                    <div  class="invalid-feedback d-block">
+                        <p *ngIf="submited && UserForm.controls.phone.hasError('required')">Phone est obligatoire</p>
+                        <p *ngIf="submited && UserForm.controls.phone.hasError('maxlength')"> Phone non valid</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary mr-3" type="submit">Update</button>
+            <button class="btn btn-danger"  routerLink="/dashboard">retour</button>
+        </form>
+    </div>
+</div>

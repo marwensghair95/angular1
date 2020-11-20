@@ -23,6 +23,7 @@ import { LoginV2Component } from './login-v2/login-v2.component';
 import { RegistrV2Component } from './registr-v2/registr-v2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateDashboardComponent } from './update-dashboard/update-dashboard.component';
 
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -60,6 +61,7 @@ export function MustMatch(controlName: string, matchingControlName: string) {
     LoginV2Component,
     RegistrV2Component,
     DashboardComponent,
+    UpdateDashboardComponent,
   ],
   imports: [
     BrowserModule,
